@@ -12,13 +12,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": ["markdown", "html", "scraper", "cli", "text processing"],
   "author": {
     "name": "zzen",
     "url": "https://github.com/zzen0701"
   },
   "license": "MIT",
-  "description": "",
+  "description": "CLI tool to save web pages in markdown format",
   "dependencies": {
     "@clack/prompts": "^0.10.1",
     "axios": "^1.8.4",
