@@ -1,10 +1,10 @@
 {
-  "name": "web2md",
+  "name": "web-to-markdown",
   "version": "1.0.0",
   "main": "./bin/index.js",
   "type": "module",
   "bin": {
-    "web2md": "./bin/index.js"
+    "save-md": "./bin/index.js"
   },
   "files": [
     "bin"
