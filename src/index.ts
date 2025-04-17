@@ -38,14 +38,36 @@ async function getURL(url: string) {
 
 async function processMarkdown(html: string) {
   const $ = cheerio.load(html);
-  $("script, style, nav, footer, header, aside, ads, iframe").remove();
-  let content = $("main").length
-    ? $("main").html()
-    : $("article").length
-    ? $("article").html()
-    : $("body").html();
-  const markdown = turndown.turndown(content || "");
-  return markdown.replace(/\n{3,}/g, "\n\n").trim();
+
+  const contentPieces: (string | null)[] = [];
+
+  $("main, article, .content, #content, .post, .entry, .page-content")
+    .find("h1, h2, h3, h4, h5, h6, p")
+    .each((index, element) => {
+      contentPieces.push($(element).prop("outerHTML"));
+    });
+
+  if (contentPieces.length === 0) {
+    $("body")
+      .find("h1, h2, h3, h4, h5, h6, p")
+      .each((index, element) => {
+        // Skip elements that are likely to be in navigation/footer areas
+        const parents = $(element).parents(
+          "nav, header, footer, sidebar, .sidebar, .navigation, .menu"
+        ).length;
+        if (parents === 0) {
+          contentPieces.push($(element).prop("outerHTML"));
+        }
+      });
+  }
+
+  const contentHTML = contentPieces.join("\n");
+
+  const markdown = turndown.turndown(contentHTML || "");
+
+  return markdown
+    .replace(/\n{3,}/g, "\n\n") // Replace multiple newlines with double newlines
+    .trim();
 }
 
 async function main() {
