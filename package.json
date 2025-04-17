@@ -13,10 +13,14 @@
   "dependencies": {
     "@clack/prompts": "^0.10.1",
     "axios": "^1.8.4",
-    "is-url": "^1.2.4"
+    "cheerio": "^1.0.0",
+    "clipboardy": "^4.0.0",
+    "is-url": "^1.2.4",
+    "turndown": "^7.2.0"
   },
   "devDependencies": {
     "@types/is-url": "^1.2.32",
-    "@types/node": "^22.14.1"
+    "@types/node": "^22.14.1",
+    "@types/turndown": "^5.0.5"
   }
 }
