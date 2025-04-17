@@ -35,3 +35,15 @@ async function getURL(url: string) {
     process.exit(1);
   }
 }
+
+async function processMarkdown(html: string) {
+  const $ = cheerio.load(html);
+  $("script, style, nav, footer, header, aside, ads, iframe").remove();
+  let content = $("main").length
+    ? $("main").html()
+    : $("article").length
+    ? $("article").html()
+    : $("body").html();
+  const markdown = turndown.turndown(content || "");
+  return markdown.replace(/\n{3,}/g, "\n\n").trim();
+}
