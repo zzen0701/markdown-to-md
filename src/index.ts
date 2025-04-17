@@ -42,14 +42,14 @@ async function processMarkdown(html: string) {
   const contentPieces: (string | null)[] = [];
 
   $("main, article, .content, #content, .post, .entry, .page-content")
-    .find("h1, h2, h3, h4, h5, h6, p")
+    .find("h1, h2, h3, h4, h5, h6, p, ol, ul")
     .each((index, element) => {
       contentPieces.push($(element).prop("outerHTML"));
     });
 
   if (contentPieces.length === 0) {
     $("body")
-      .find("h1, h2, h3, h4, h5, h6, p")
+      .find("h1, h2, h3, h4, h5, h6, p, ol, ul")
       .each((index, element) => {
         const parents = $(element).parents(
           "nav, header, footer, sidebar, .sidebar, .navigation, .menu"
