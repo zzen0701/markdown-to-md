@@ -5,6 +5,7 @@ import isUrl from "is-url";
 import * as cheerio from "cheerio";
 import TurndownService from "turndown";
 import clipboard from "clipboardy";
+import minimist from "minimist";
 
 const turndown = new TurndownService({
   headingStyle: "atx",
@@ -62,7 +63,19 @@ async function processMarkdown(html: string) {
 }
 
 async function main() {
-  const url = await promptURL();
+  const argv = minimist(process.argv.slice(2), {
+    string: ['url', 'u'],
+    alias: { u: 'url' }
+  });
+
+  let url: string | symbol;
+
+  if (argv.url && isUrl(argv.url)) {
+    url = argv.url;
+  } else {
+    url = await promptURL();
+  }
+
   if (typeof url !== "string") {
     process.exit(0);
   }

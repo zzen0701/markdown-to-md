@@ -7,7 +7,7 @@ A command-line tool that converts web pages to markdown and copies the result to
 - Extracts meaningful content from web pages (headings, paragraphs, lists)
 - Removes navigation, headers, footers, scripts, and other noise
 - Copies the result directly to your clipboard
-- Run with a simple terminal command
+- Run with a simple terminal command(``save-md --url [url]`` or ``save-md --u [url]``)
 
 ## Installation
 ### Requirements
@@ -33,7 +33,7 @@ npm i -g
 
 ```bash
 # Run the package
-save-md
+save-md --url https://example.com/
 ```
 
 You'll be prompted to enter a URL. The tool will then:
