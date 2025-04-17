@@ -51,7 +51,6 @@ async function processMarkdown(html: string) {
     $("body")
       .find("h1, h2, h3, h4, h5, h6, p")
       .each((index, element) => {
-        // Skip elements that are likely to be in navigation/footer areas
         const parents = $(element).parents(
           "nav, header, footer, sidebar, .sidebar, .navigation, .menu"
         ).length;
@@ -65,9 +64,7 @@ async function processMarkdown(html: string) {
 
   const markdown = turndown.turndown(contentHTML || "");
 
-  return markdown
-    .replace(/\n{3,}/g, "\n\n") // Replace multiple newlines with double newlines
-    .trim();
+  return markdown.replace(/\n{3,}/g, "\n\n").trim();
 }
 
 async function main() {
