@@ -19,7 +19,7 @@ A command-line tool that converts web pages to markdown and copies the result to
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/web-to-markdown.git
+git clone https://github.com/zzen0701/web-to-markdown.git
 cd web-to-markdown
 
 # Install dependencies
