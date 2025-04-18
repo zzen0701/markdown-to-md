@@ -36,7 +36,7 @@ npm i -g
 save-md --url https://example.com/
 ```
 
-You'll be prompted to enter a URL. The tool will then:
+The tool will then:
 
 - Fetch the web page
 - Extract the important content
